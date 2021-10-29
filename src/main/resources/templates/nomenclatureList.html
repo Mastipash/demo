@@ -1,0 +1,27 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>Список товаров</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>
+</head>
+<body>
+<h1>Товары</h1>
+<a href="addNomenclature">Добавить товар</a>
+<br/><br/>
+<div>
+    <table border="1">
+        <tr>
+            <th>Код</th>
+            <th>Описание</th>
+            <th>Цена</th>
+        </tr>
+        <tr th:each ="nomenclature : ${nomenclatures}">
+            <td th:utext="${nomenclature.code}">...</td>
+            <td th:utext="${nomenclature.description}">...</td>
+            <td th:utext="${nomenclature.price}">...</td>
+        </tr>
+    </table>
+</div>
+</body>
+</html>
