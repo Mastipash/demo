@@ -1,0 +1,45 @@
+insert into nomenclature (code, description, price)
+values ('46022','lego creator', 500.00);
+insert into nomenclature (code, description, price)
+values ('46025','Lego technic', 400.00);
+
+insert into storage (name, address, is_pvz)
+values ('Склад №1', 'Проспект Мира д.1', false);
+insert into storage (name, address, is_pvz)
+values ('РИО', 'Проспект Мира д.2', true);
+insert into storage (name, address, is_pvz)
+values ('Город Хобби', 'Проспект Мира д.3', true);
+
+insert into doc_status (id, name)
+values (1, 'Создан');
+insert into doc_status (id, name)
+values (2, 'Доставлен в ПВЗ');
+insert into doc_status (id, name)
+values (3, 'Выдан');
+insert into doc_status (id, name)
+values (4, 'Отменен');
+
+insert into product (dt_start, dt_end, nomenclature_id, cnt, storage_id)
+values (current_timestamp, current_timestamp, 1, 10, 1);
+
+insert into product (dt_start, dt_end, nomenclature_id, cnt, storage_id)
+values (current_timestamp, current_timestamp, 1, 5, 3);
+
+insert into document (doc_num, nomenclature_id, cnt, status_id, storage_id)
+values ('заказ №1', 1, 4, 1, 1);
+
+insert into document (doc_num, nomenclature_id, cnt, status_id, storage_id)
+values ('заказ №2', 1, 20, 3, 3);
+
+insert into emp_role (role) values ('Продавец');
+insert into emp_role (role) values ('Сотрудник склада');
+insert into emp_role (role) values ('Сотрудник ПВЗ');
+
+insert into employee (fio, role_id) VALUES ('Иванов Иван Иванович',1);
+insert into employee (fio, role_id) VALUES ('Смирнов Сергей Николаевич',2);
+insert into employee (fio, role_id) VALUES ('Петров Александр Сергеевич',3);
+
+
+
+
+
