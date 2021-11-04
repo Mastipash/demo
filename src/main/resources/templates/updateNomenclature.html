@@ -1,15 +1,16 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html lang="ru" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8" />
-    <title>Добавить товар</title>
+    <title>Редактировать товар</title>
     <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>
 </head>
 <body>
 <h1>Добро пожаловать на склад</h1>
-<h2>Добавьте товар:</h2>
-
-<form action="#" th:action="@{/saveNomenclature}" th:object="${nomenclature}" method="POST">
+<h2>Изменить товар:</h2>
+<form action="#" th:action="@{/saveNomenclature}" th:object="${nomenclature}" method="post">
+    <input type="hidden" th:field="*{id}">
+    <br>
     Код:
     <input type="text" th:field="*{code}" />
     <br/>
@@ -20,9 +21,8 @@
     <input type="text" th:field="*{price}" />
     <br>
     <button type="submit">Сохранить товар</button>
+    <br>
+    <a th:href="@{/nomenclaturesList}">Вернуться к списку товаров</a>
 </form>
-<br>
-<a th:href="@{/nomenclaturesList.html}">Вернуться к списку товаров</a>
-
 </body>
 </html>
