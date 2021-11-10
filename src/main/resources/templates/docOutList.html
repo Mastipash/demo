@@ -1,0 +1,32 @@
+<!DOCTYPE HTML>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Список заказов</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>
+</head>
+<body>
+<h1>Заказы</h1>
+
+<br/><br/>
+<div>
+    <table border="1">
+        <thead>
+        <tr>
+            <th>Номер заказа</th>
+            <th>Кол-во</th>
+            <th>Номенклатура</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="document : ${docOutList}">
+            <td th:utext="${document.docNum}"></td>
+            <td th:utext="${document.cnt}"></td>
+            <td th:utext="${document.nomenclatureId}"></td>
+
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
