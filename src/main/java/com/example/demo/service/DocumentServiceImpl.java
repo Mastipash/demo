@@ -1,6 +1,5 @@
 package com.example.demo.service;
 
-import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +20,7 @@ public class DocumentServiceImpl implements DocumentService{
     }
 
     @Override
-    public void saveDocument(Document document) {
+    public void saveDocuments(Document document) {
         this.documentRepository.save(document);
     }
 

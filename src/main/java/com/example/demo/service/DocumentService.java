@@ -4,7 +4,8 @@ import com.example.demo.entity.Document;
 
 public interface DocumentService {
     Iterable<Document> getAllDocuments();
-    void saveDocument(Document nomenclature);
+    void saveDocuments(Document document);
     Document getDocumentById(int id);
+
 
 }
