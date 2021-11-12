@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Добавленние товаров на склад</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>
+</head>
+<body>
+<h1>Добавить товар на склад:</h1>
+<form action="#" th:action="@{/saveProducts}" th:object="${product}" method="post">
+
+    Наименование товара:
+    <input type="text" th:field="*{nomenclatureId}"/>
+    <br/><br/>
+    Количество:
+    <input type="text" th:field="*{cnt}"/>
+    <br/><br/>
+    Пункт выдачи:
+    <input type="text" th:field="*{storageId}"/>
+    <br/>
+    <button type="submit">Добавить товар</button>
+    <br>
+    <a th:href="@{/productList}">Вернуться к списку товаров на складе</a>
+</form>
+</body>
+</html>

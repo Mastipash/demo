@@ -1,0 +1,35 @@
+<!DOCTYPE HTML>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Наличие товаров</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>
+</head>
+<body>
+<h1>Наличие товаров</h1>
+
+<br/><br/>
+<div>
+    <table border="1">
+        <thead>
+        <tr>
+            <th>Номенклатура</th>
+            <th>Кол-во</th>
+            <th>Склад/ПВЗ</th>
+         </tr>
+        </thead>
+        <tbody>
+        <tr th:each="product : ${productList}">
+            <td th:utext="${product.nomenclatureId}"></td>
+            <td th:utext="${product.cnt}"></td>
+            <td th:utext="${product.storageId}"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<br/><br/>
+<a th:href="@{/addProduct}">Добавить товар на склад</a>
+<br/><br/>
+<a th:href="@{/index}">Главная страница</a>
+</body>
+</html>
