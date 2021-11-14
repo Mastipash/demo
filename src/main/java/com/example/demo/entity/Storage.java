@@ -6,6 +6,9 @@ import lombok.Setter;
 import lombok.ToString;
 
 import javax.persistence.*;
+import java.io.Serializable;
+import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "storage")
@@ -18,13 +21,18 @@ public class Storage {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column
-    private Integer name;
+   @Column
+      private String name;
+
+
+    @OneToMany(mappedBy="storage")
+    private Set<Product> product;
 
     @Column
-    private Integer address;
+    private String address;
 
-    @Column (name = "is_pvz")
-    private Integer isPvz;
+    @Column(name = "is_pvz")
+    private Boolean isPvz;
+
 
 }

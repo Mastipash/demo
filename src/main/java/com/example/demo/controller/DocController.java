@@ -1,7 +1,9 @@
 package com.example.demo.controller;
 
 import com.example.demo.entity.Document;
+import com.example.demo.entity.Product;
 import com.example.demo.service.DocumentService;
+import com.example.demo.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,6 +16,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 public class DocController {
     @Autowired
     private DocumentService documentService;
+    @Autowired
+    private ProductService productService;
 
     @GetMapping("/docOutList")
     public String docOutList(Model model) {
@@ -33,13 +37,17 @@ public class DocController {
     @PostMapping("/saveDocuments")
     public String saveDocuments(@ModelAttribute("document") Document document) {
         documentService.saveDocuments(document);
+        System.out.println("saveDocuments " + document);
         return "redirect:/docOutList";
     }
 
     @GetMapping("/addDocOut")
     public String showAddDocOutPage(Model model) {
         Document document = new Document();
+        Product product = new Product();
         model.addAttribute("document", document);
+        model.addAttribute("product", product);
+        System.out.println("addDocOut " + document);
         return "addDocOut";
     }
 }

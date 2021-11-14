@@ -16,13 +16,15 @@
             <th>Номенклатура</th>
             <th>Кол-во</th>
             <th>Склад/ПВЗ</th>
+            <th>Склад/ПВЗ(name)</th>
          </tr>
         </thead>
         <tbody>
         <tr th:each="product : ${productList}">
             <td th:utext="${product.nomenclatureId}"></td>
             <td th:utext="${product.cnt}"></td>
-            <td th:utext="${product.storageId}"></td>
+            <td th:utext="${product.storage.id}"></td>
+            <td th:utext="${product.storage.name}"></td>
         </tr>
         </tbody>
     </table>

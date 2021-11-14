@@ -9,17 +9,40 @@
 <h1>Добавить товар на склад:</h1>
 <form action="#" th:action="@{/saveProducts}" th:object="${product}" method="post">
 
-    Наименование товара:
-    <input type="text" th:field="*{nomenclatureId}"/>
-    <br/><br/>
+    <!--input type="text" th:field="*{nomenclatureId}"/-->
+    <div>
+        <br/>
+        Наименование товара:
+        <select class="form-control" id="nomenclatureId" name="nomenclatureId">
+            <option th:each="nomenklature : ${nomenklList}"
+                    th:value="${nomenklature.id}"
+                    th:text="${nomenklature.description}"
+                    th:field="*{nomenclatureId}"></option>
+
+        </select>
+    </div>
+    <br/>
+
     Количество:
     <input type="text" th:field="*{cnt}"/>
-    <br/><br/>
-    Пункт выдачи:
-    <input type="text" th:field="*{storageId}"/>
+    <!--input type="text" value="1" name="storage" th:id="*{storage}"/-->
+    <!--input type="text" value="1" name="storageId" th:id="*{storageId}"/-->
+
+    <div>
+        <br/>
+        Склад:
+        <select class="form-control" id="storage.id" name="storage.id">
+            <option th:each="storage : ${storageList}"
+                    th:value="${storage.id}"
+                    th:text="${storage.name}"></option>
+        </select>
+    </div>
+
+    <br/>
+    <!--input type="text"  th:field="*{storage}"/-->
     <br/>
     <button type="submit">Добавить товар</button>
-    <br>
+    <br><br/>
     <a th:href="@{/productList}">Вернуться к списку товаров на складе</a>
 </form>
 </body>

@@ -9,8 +9,11 @@ import org.hibernate.Hibernate;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 import java.util.Objects;
+import java.util.Set;
 
 @Entity
 @Table(name = "product")
@@ -34,9 +37,12 @@ public class Product {
     @Column
     private Integer cnt;
 
-    @Column(name = "storage_id")
-     private Integer storageId;
+  // @Column(name = "storage_id")
+ //  private Integer storageId;
 
+    @ManyToOne
+    @JoinColumn(name="storage_id", nullable=false)
+    private Storage storage;
 
     @Override
     public boolean equals(Object o) {

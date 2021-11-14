@@ -15,11 +15,15 @@ public class ProductImpl implements ProductService {
 
     @Override
     public Iterable<Product> getAllProducts() {
+        System.out.println("getAllProducts!!!");
         return productRepository.findAll();
     }
 
     @Override
     public void saveProducts(Product document) {
+
+        System.out.println("saveProducts " + document);
+
         this.productRepository.save(document);
     }
 
