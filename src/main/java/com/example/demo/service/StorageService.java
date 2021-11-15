@@ -6,5 +6,4 @@ public interface StorageService {
     Iterable<Storage> getAllStorages();
     Storage getStorageById(int id);
 
-
 }

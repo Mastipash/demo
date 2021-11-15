@@ -31,8 +31,8 @@ public class Product {
     @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")
     private Date dtStart;
 
-    @Column(name = "nomenclature_id")
-    private Integer nomenclatureId;
+//   @Column(name = "nomenclature_id")
+//   private Integer nomenclatureId;
 
     @Column
     private Integer cnt;
@@ -43,6 +43,10 @@ public class Product {
     @ManyToOne
     @JoinColumn(name="storage_id", nullable=false)
     private Storage storage;
+
+    @ManyToOne
+    @JoinColumn(name="nomenclature_id", nullable=false)
+    private Nomenclature nomenclature;
 
     @Override
     public boolean equals(Object o) {

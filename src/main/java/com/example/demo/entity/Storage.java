@@ -6,8 +6,6 @@ import lombok.Setter;
 import lombok.ToString;
 
 import javax.persistence.*;
-import java.io.Serializable;
-import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -24,15 +22,16 @@ public class Storage {
    @Column
       private String name;
 
-
     @OneToMany(mappedBy="storage")
     private Set<Product> product;
+
+    @OneToMany(mappedBy="storage")
+    private Set<Document> document;
 
     @Column
     private String address;
 
     @Column(name = "is_pvz")
     private Boolean isPvz;
-
 
 }

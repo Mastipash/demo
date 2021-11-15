@@ -30,8 +30,13 @@ public class Document {
     @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")
     private Date dtStart;
 
-    @Column(name = "nomenclature_id")
-    private Integer nomenclatureId;
+  //  @Column(name = "nomenclature_id")
+  //  private Integer nomenclatureId;
+
+    @ManyToOne
+    @JoinColumn(name="nomenclature_id", nullable=false)
+    private Nomenclature nomenclature;
+
 
     @Column
     private Integer cnt;
@@ -39,8 +44,12 @@ public class Document {
     @Column(name = "status_id")
     private Integer statusId;
 
-    @Column(name = "storage_id")
-    private Integer storageId;
+ //@Column(name = "storage_id")
+ //  private Integer storageId;
+
+    @ManyToOne
+    @JoinColumn(name="storage_id", nullable=false)
+    private Storage storage;
 
     @Override
     public boolean equals(Object o) {

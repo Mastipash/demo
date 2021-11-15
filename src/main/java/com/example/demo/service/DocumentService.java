@@ -7,5 +7,4 @@ public interface DocumentService {
     void saveDocuments(Document document);
     Document getDocumentById(int id);
 
-
 }

@@ -46,9 +46,8 @@ public class ProdController {
     @GetMapping("/addProduct")
     public String showAddProductPage(Model model) {
         Product product = new Product();
-      //  model.addAttribute("productList", productService.getAllProducts()); // для списка
-        model.addAttribute("nomenklList", nomenclatureService.getAllNomenclatures()); // для списка
-        model.addAttribute("storageList", storageService.getAllStorages()); // для списка
+        model.addAttribute("nomenklList", nomenclatureService.getAllNomenclatures());
+        model.addAttribute("storageList", storageService.getAllStorages());
         model.addAttribute("product", product);
         System.out.println("productList " + product);
         return "addProduct";

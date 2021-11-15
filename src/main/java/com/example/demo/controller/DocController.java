@@ -3,7 +3,8 @@ package com.example.demo.controller;
 import com.example.demo.entity.Document;
 import com.example.demo.entity.Product;
 import com.example.demo.service.DocumentService;
-import com.example.demo.service.ProductService;
+import com.example.demo.service.NomenclatureService;
+import com.example.demo.service.StorageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,7 +18,9 @@ public class DocController {
     @Autowired
     private DocumentService documentService;
     @Autowired
-    private ProductService productService;
+    private NomenclatureService nomenclatureService;
+    @Autowired
+    private StorageService storageService;
 
     @GetMapping("/docOutList")
     public String docOutList(Model model) {
@@ -46,7 +49,8 @@ public class DocController {
         Document document = new Document();
         Product product = new Product();
         model.addAttribute("document", document);
-        model.addAttribute("product", product);
+        model.addAttribute("storageList", storageService.getAllStorages());
+        model.addAttribute("nomenklList", nomenclatureService.getAllNomenclatures());
         System.out.println("addDocOut " + document);
         return "addDocOut";
     }

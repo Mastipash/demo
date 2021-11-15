@@ -8,7 +8,6 @@ public interface DocumentRepository extends PagingAndSortingRepository<Document,
     //   Document findById(String id);
 
     @Query(
-
             value = "SELECT d.*,n.* as DSC FROM document d left join nomenclature n on d.nomenclature_id = n.id WHERE d.status_id = ?1",
             nativeQuery = true)
     Document findDocByStatusNative(Integer statusId);

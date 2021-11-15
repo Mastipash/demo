@@ -17,7 +17,7 @@
             <th>Номенклатура</th>
             <th>Кол-во</th>
             <th>Статус заказа</th>
-            <th>Пункт выдачи</th>
+            <th>Склад</th>
             <th>Действия</th>
 
         </tr>
@@ -27,11 +27,11 @@
             <td th:utext="${document.docNum}"></td>
             <td th:utext="${document.dtStart}"></td>
             <!--td th:utext="${document.description}"></td-->
-            <td th:utext="${document.nomenclatureId}"></td>
+            <td th:utext="${document.nomenclature.description}"></td>
 
             <td th:utext="${document.cnt}"></td>
             <td th:utext="${document.statusId}"></td>
-            <td th:utext="${document.storageId}"></td>
+            <td th:utext="${document.storage.name}"></td-->
             <td><a th:href="@{/updateDocOut/{id}(id=${document.id})}">Редактировать</a></td>
 
         </tr>

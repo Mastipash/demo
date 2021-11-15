@@ -15,7 +15,6 @@ public class ProductImpl implements ProductService {
 
     @Override
     public Iterable<Product> getAllProducts() {
-        System.out.println("getAllProducts!!!");
         return productRepository.findAll();
     }
 
@@ -38,6 +37,5 @@ public class ProductImpl implements ProductService {
         }
         return product;
     }
-
 
 }

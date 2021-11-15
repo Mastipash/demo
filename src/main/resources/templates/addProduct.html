@@ -13,11 +13,10 @@
     <div>
         <br/>
         Наименование товара:
-        <select class="form-control" id="nomenclatureId" name="nomenclatureId">
+        <select class="form-control" id="nomenclature.id" name="nomenclature.id">
             <option th:each="nomenklature : ${nomenklList}"
                     th:value="${nomenklature.id}"
-                    th:text="${nomenklature.description}"
-                    th:field="*{nomenclatureId}"></option>
+                    th:text="${nomenklature.description}"></option>
 
         </select>
     </div>

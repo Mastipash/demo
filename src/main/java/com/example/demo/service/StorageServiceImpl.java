@@ -31,5 +31,4 @@ public class StorageServiceImpl implements StorageService {
         return storage;
     }
 
-
 }

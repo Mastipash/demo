@@ -15,18 +15,36 @@
     <br/><br/>
     Дата
     <input type="datetime-local" th:name="dtStart" th:id="*{dtStart}"/>
-       <br/><br/>
-    Наименование товара:
-    <input type="text" th:field="*{nomenclatureId}"/>
-    <br/><br/>
+       <br/>
+     <div>
+        <br/>
+        Наименование товара:
+        <select class="form-control" id="nomenclature.id" name="nomenclature.id">
+            <option th:each="nomenklature : ${nomenklList}"
+                    th:value="${nomenklature.id}"
+                    th:text="${nomenklature.description}"></option>
+        </select>
+    </div>
+    <br/>
     Количество:
     <input type="text" th:field="*{cnt}"/>
     <br/><br/>
     Статус заказа:
     <input type="text" th:field="*{statusId}"/>
-    <br/><br/>
-    Пункт выдачи:
-    <input type="text" th:field="*{storageId}"/>
+
+    <!--input type="text" th:field="*{storageId}"/-->
+    <div>
+        <br/>
+        Склад:
+        <select class="form-control" id="storage.id" name="storage.id">
+        <!--select class="form-control" id="storageId" name="storageId"-->
+            <option th:each="storage : ${storageList}"
+                    th:value="${storage.id}"
+                    th:text="${storage.name}"></option>
+        </select>
+    </div>
+
+
     <br/>
     <button type="submit">Добавить заказ</button>
     <br>
