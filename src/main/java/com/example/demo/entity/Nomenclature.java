@@ -5,6 +5,7 @@ import org.hibernate.Hibernate;
 
 import javax.persistence.*;
 import java.util.Objects;
+import java.util.Set;
 
 @Entity
 @Table(name = "nomenclature")
@@ -27,6 +28,12 @@ public class Nomenclature {
 
     @Column(nullable = false)
     private int price;
+
+    @OneToMany(mappedBy="storage")
+    private Set<Document> document;
+
+    @OneToMany(mappedBy="storage")
+    private Set<Product> product;
 
     @Override
     public boolean equals(Object o) {
