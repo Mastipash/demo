@@ -39,7 +39,7 @@ public class PdfDocument  {
 
             PdfPTable table = new PdfPTable(4);
             // Add PDF Table Header ->
-            Stream.of("NN", "Payment", "Accounting %", "Payment amount", "Principal Balance").forEach(headerTitle ->
+            Stream.of("№", "Код товара", "Описание", "Цена").forEach(headerTitle ->
             {
                 PdfPCell header = new PdfPCell();
                 Font headFont = FontFactory.getFont(FontFactory.HELVETICA_BOLD);
