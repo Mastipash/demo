@@ -16,18 +16,36 @@
     <br/><br/>
     Дата заказа:
     <input type="datetime-local" th:field="*{dtStart}"/>
-    <br/><br/>
-    Наименование товара:
-    <input type="text" th:field="*{nomenclatureId}"/>
+    <div>
+        <br/>
+        Наименование товара:
+        <select class="form-control" id="nomenclature.id" name="nomenclature.id">
+            <option th:each="nomenklature : ${nomenklList}"
+                    th:value="${nomenklature.id}"
+                    th:text="${nomenklature.description}"></option>
+        </select>
+    </div>
     <br/><br/>
     Количество:
     <input type="text" th:field="*{cnt}"/>
-    <br/><br/>
+    <br/>
+    <div>
     Статус заказа:
-    <input type="text" th:field="*{statusId}"/>
-    <br/><br/>
-    Пункт выдачи:
-    <input type="text" th:field="*{storageId}"/>
+        <select class="form-control" id="docStatus.id" name="docStatus.id">
+            <option th:each="docStatus : ${docStatusList}"
+                    th:value="${docStatus.id}"
+                    th:text="${docStatus.name}"></option>
+        </select>
+    </div>
+    <br/>
+    <div>
+        Склад:
+        <select class="form-control" id="storage.id" name="storage.id">
+            <option th:each="storage : ${storageList}"
+                    th:value="${storage.id}"
+                    th:text="${storage.name}"></option>
+        </select>
+    </div>
     <br/>
     <button type="submit">Сохранить заказ</button>
     <br>

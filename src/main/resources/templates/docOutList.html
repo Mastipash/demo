@@ -26,11 +26,9 @@
         <tr th:each="document : ${docOutList}">
             <td th:utext="${document.docNum}"></td>
             <td th:utext="${document.dtStart}"></td>
-            <!--td th:utext="${document.description}"></td-->
             <td th:utext="${document.nomenclature.description}"></td>
-
             <td th:utext="${document.cnt}"></td>
-            <td th:utext="${document.statusId}"></td>
+            <td th:utext="${document.docStatus.name}"></td>
             <td th:utext="${document.storage.name}"></td>
             <td><a th:href="@{/updateDocOut/{id}(id=${document.id})}">Редактировать</a></td>
 

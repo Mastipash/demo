@@ -2,6 +2,7 @@ package com.example.demo.controller;
 
 import com.example.demo.entity.Document;
 import com.example.demo.entity.Product;
+import com.example.demo.service.DocStatusService;
 import com.example.demo.service.DocumentService;
 import com.example.demo.service.NomenclatureService;
 import com.example.demo.service.StorageService;
@@ -21,6 +22,8 @@ public class DocController {
     private NomenclatureService nomenclatureService;
     @Autowired
     private StorageService storageService;
+    @Autowired
+    private DocStatusService docStatusService;
 
     @GetMapping("/docOutList")
     public String docOutList(Model model) {
@@ -33,6 +36,9 @@ public class DocController {
     @GetMapping("/updateDocOut/{id}")
     public String updateDocOut(@PathVariable(value = "id") int id, Model model) {
         Document document = documentService.getDocumentById(id);
+        model.addAttribute("storageList", storageService.getAllStorages());
+        model.addAttribute("nomenklList", nomenclatureService.getAllNomenclatures());
+        model.addAttribute("docStatusList", docStatusService.getAllDocStatus());
         model.addAttribute("document", document);
         return "updateDocOut";
     }
@@ -51,6 +57,7 @@ public class DocController {
         model.addAttribute("document", document);
         model.addAttribute("storageList", storageService.getAllStorages());
         model.addAttribute("nomenklList", nomenclatureService.getAllNomenclatures());
+        model.addAttribute("docStatusList", docStatusService.getAllDocStatus());
         System.out.println("addDocOut " + document);
         return "addDocOut";
     }

@@ -29,8 +29,15 @@
     Количество:
     <input type="text" th:field="*{cnt}"/>
     <br/><br/>
-    Статус заказа:
-    <input type="text" th:field="*{statusId}"/>
+     <div>
+        <br/>
+        Статус заказа:
+        <select class="form-control" id="docStatus.id" name="docStatus.id">
+            <option th:each="docStatus : ${docStatusList}"
+                    th:value="${docStatus.id}"
+                    th:text="${docStatus.name}"></option>
+        </select>
+    </div>
 
     <!--input type="text" th:field="*{storageId}"/-->
     <div>

@@ -41,8 +41,12 @@ public class Document {
     @Column
     private Integer cnt;
 
-    @Column(name = "status_id")
-    private Integer statusId;
+  ////  @Column(name = "status_id")
+   ///  private Integer statusId;
+
+    @ManyToOne
+    @JoinColumn(name="status_id", nullable=false)
+    private DocStatus docStatus;
 
  //@Column(name = "storage_id")
  //  private Integer storageId;
