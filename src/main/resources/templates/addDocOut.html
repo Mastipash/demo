@@ -15,8 +15,8 @@
     <br/><br/>
     Дата
     <input type="datetime-local" th:name="dtStart" th:id="*{dtStart}"/>
-       <br/>
-     <div>
+    <br/>
+    <div>
         <br/>
         Наименование товара:
         <select class="form-control" id="nomenclature.id" name="nomenclature.id">
@@ -37,7 +37,7 @@
         <br/>
         Склад:
         <select class="form-control" id="storage.id" name="storage.id">
-        <!--select class="form-control" id="storageId" name="storageId"-->
+            <!--select class="form-control" id="storageId" name="storageId"-->
             <option th:each="storage : ${storageList}"
                     th:value="${storage.id}"
                     th:text="${storage.name}"></option>

@@ -1,28 +1,37 @@
 <!DOCTYPE html>
 <html lang="ru" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8" />
+    <meta charset="UTF-8">
     <title>Редактировать товар</title>
-    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </head>
 <body>
+<nav class="navbar navbar-expand-md navbar-light bg-light">
+    <div class="navbar-nav">
+        <a th:href="@{/nomenclaturesList}" class="nav-item nav-link active">Товары</a>
+        <a class="nav-item nav-link">Заказы</a>
+        <a class="nav-item nav-link">Адреса</a>
+        <a class="nav-item nav-link">Документы</a>
+    </div>
+</nav>
 <h1>Добро пожаловать на склад</h1>
 <h2>Изменить товар:</h2>
-<form action="#" th:action="@{/saveNomenclature}" th:object="${nomenclature}" method="post">
-    <input type="hidden" th:field="*{id}">
-    <br>
-    Код:
-    <input type="text" th:field="*{code}" />
-    <br/>
-    Описание:
-    <input type="text" th:field="*{description}" />
-    <br/>
-    Цена:
-    <input type="text" th:field="*{price}" />
-    <br>
-    <button type="submit">Сохранить товар</button>
-    <br>
-    <a th:href="@{/nomenclaturesList}">Вернуться к списку товаров</a>
-</form>
+<div class="col-6">
+    <form action="#" th:action="@{/saveNomenclature}" th:object="${nomenclature}" method="POST">
+        <div class="form-group">
+            <label for="code">Код:</label>
+            <input type="text" class="form-control form-control-md" id="code" th:field="*{code}">
+        </div>
+        <div class="form-group">
+            <label for="desc">Описание:</label>
+            <input type="text"  class="form-control form-control-md" id="desc" th:field="*{description}">
+        </div>
+        <div class="form-group">
+            <label for="price">Цена:</label>
+            <input type="text"  class="form-control form-control-md" id="price" th:field="*{price}">
+        </div>
+        <button type="submit" class="btn btn-primary">Сохранить товар</button>
+    </form>
+</div>
 </body>
 </html>
