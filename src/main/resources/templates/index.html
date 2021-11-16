@@ -1,16 +1,17 @@
 <!DOCTYPE HTML>
 <html lang="ru" xmlns:th="http://www.thymeleaf.org">
-<head>
-  <meta charset="UTF-8" />
-  <title>Система управления складом</title>
-  <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>
-</head>
-<body>
-<h1>Добро пожаловать на склад</h1>
-
-
-<a th:href="@{/nomenclaturesList}">Список товаров</a>
-
-</body>
-
+  <head>
+    <meta charset="UTF-8" />
+    <title>Система управления складом</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"/>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-md navbar-light bg-light">
+      <div class="navbar-nav">
+        <a th:href="@{/nomenclaturesList}" class="nav-item nav-link">Товары</a>
+        <a th:href="@{/docOutList}" class="nav-item nav-link">Заказы</a>
+      </div>
+    </nav>
+    <h1>Добро пожаловать на склад</h1>
+  </body>
 </html>
