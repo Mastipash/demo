@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Добавленние заказа</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>
+</head>
+<body>
+<h1>Добавить заказ:</h1>
+<form action="#" th:action="@{/saveDocuments}" th:object="${document}" method="post">
+    <input type="hidden" th:field="*{id}">
+    <br>
+    Номер заказа:
+    <input type="text" th:field="*{docNum}"/>
+    <br/><br/>
+    Дата
+    <input type="datetime-local" th:name="dtStart" th:id="*{dtStart}"/>
+       <br/>
+     <div>
+        <br/>
+        Наименование товара:
+        <select class="form-control" id="nomenclature.id" name="nomenclature.id">
+            <option th:each="nomenklature : ${nomenklList}"
+                    th:value="${nomenklature.id}"
+                    th:text="${nomenklature.description}"></option>
+        </select>
+    </div>
+    <br/>
+    Количество:
+    <input type="text" th:field="*{cnt}"/>
+    <br/><br/>
+    Статус заказа:
+    <input type="text" th:field="*{statusId}"/>
+
+    <!--input type="text" th:field="*{storageId}"/-->
+    <div>
+        <br/>
+        Склад:
+        <select class="form-control" id="storage.id" name="storage.id">
+        <!--select class="form-control" id="storageId" name="storageId"-->
+            <option th:each="storage : ${storageList}"
+                    th:value="${storage.id}"
+                    th:text="${storage.name}"></option>
+        </select>
+    </div>
+
+
+    <br/>
+    <button type="submit">Добавить заказ</button>
+    <br>
+    <a th:href="@{/docOutList}">Вернуться к списку заказов</a>
+</form>
+</body>
+</html>

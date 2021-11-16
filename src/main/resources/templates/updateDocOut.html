@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Редактировать заказ</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>
+</head>
+<body>
+<h1>Добро пожаловать на склад</h1>
+<h2>Изменить заказ:</h2>
+<form action="#" th:action="@{/saveDocuments}" th:object="${document}" method="post">
+    <input type="hidden" th:field="*{id}">
+    <br>
+    Номер заказа:
+    <input type="text" th:field="*{docNum}"/>
+    <br/><br/>
+    Дата заказа:
+    <input type="datetime-local" th:field="*{dtStart}"/>
+    <br/><br/>
+    Наименование товара:
+    <input type="text" th:field="*{nomenclatureId}"/>
+    <br/><br/>
+    Количество:
+    <input type="text" th:field="*{cnt}"/>
+    <br/><br/>
+    Статус заказа:
+    <input type="text" th:field="*{statusId}"/>
+    <br/><br/>
+    Пункт выдачи:
+    <input type="text" th:field="*{storageId}"/>
+    <br/>
+    <button type="submit">Сохранить заказ</button>
+    <br>
+    <a th:href="@{/docOutList}">Вернуться к списку заказов</a>
+</form>
+</body>
+</html>

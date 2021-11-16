@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import com.example.demo.entity.Nomenclature;
 import com.example.demo.service.NomenclatureService;
-
 @Controller
 public class MainController {
 
