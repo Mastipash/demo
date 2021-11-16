@@ -56,7 +56,7 @@ public class MainController {
     public String updateNomenclature(@PathVariable(value="id") int id, Model model) {
         Nomenclature nomenclature = nomenclatureService.getNomenclatureById(id);
         model.addAttribute("nomenclature", nomenclature);
-        return "redirect:/nomenclaturesList";
+        return "updateNomenclature";
     }
 
     @PostMapping(value = "/exportPdf")
