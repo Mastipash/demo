@@ -13,9 +13,9 @@ public interface DocumentRepository extends PagingAndSortingRepository<Document,
     @Modifying
     @Transactional
     @Query(
-            value = "update document set status_id = 2 where id = ?1 and status_id = 1",
+            value = "update document set status_id = ?3 where id = ?1 and status_id = ?2",
             nativeQuery = true)
-    Integer updateStatusByIdNative(Integer Id);
+    Integer updateStatusByIdNative(Integer Id, Integer stausFrom, Integer statusTo);
 
 
     @Query(

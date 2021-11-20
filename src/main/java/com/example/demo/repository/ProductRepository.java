@@ -24,9 +24,9 @@ public interface ProductRepository extends PagingAndSortingRepository<Product, I
     @Modifying
     @Transactional
     @Query(
-            value = "update product set cnt = cnt - ?2 where nomenclature_id = ?1 and storage_id = 1",
+            value = "update product set cnt = cnt - ?2 where nomenclature_id = ?1 and storage_id = ?3",
             nativeQuery = true)
-    void reduceProductByNomId(Integer nomId, Integer cnt);
+    void reduceProductByNomId(Integer nomId, Integer cnt, Integer storId);
 
     @Modifying
     @Transactional
@@ -35,5 +35,12 @@ public interface ProductRepository extends PagingAndSortingRepository<Product, I
                     "values (current_timestamp, current_timestamp,?1,?2,?3)",
             nativeQuery = true)
     void insertIntoPVZByNomId(Integer nomId, Integer cnt, Integer storId);
+
+    @Modifying
+    @Transactional
+    @Query(
+            value = "delete from product where id = ?1",
+            nativeQuery = true)
+    void getOutProductById(Integer id);
 
 }

@@ -59,9 +59,9 @@ public class DocumentServiceImpl implements DocumentService {
 
             if (cntExist != 0) {
 
-                productRepository.reduceProductByNomId(nomId, cntNeed); // списать с основного склада
+                productRepository.reduceProductByNomId(nomId, cntNeed, 1); // списать с основного склада
                 productRepository.insertIntoPVZByNomId(nomId, cntNeed, storId);  // переместить в ПВЗ
-                res = documentRepository.updateStatusByIdNative(id); // обновить статус заказа
+                res = documentRepository.updateStatusByIdNative(id,1,2); // обновить статус заказа
             }
 
             if (res != 0) {
