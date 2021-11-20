@@ -7,8 +7,6 @@ import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.transaction.annotation.Transactional;
 
 public interface DocumentRepository extends PagingAndSortingRepository<Document, Integer> {
-    //   Document findById(String id);
-
 
     @Modifying
     @Transactional

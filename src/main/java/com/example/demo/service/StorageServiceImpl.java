@@ -15,13 +15,12 @@ public class StorageServiceImpl implements StorageService {
 
     @Override
     public Iterable<Storage> getAllStorages() {
-
         return storageRepository.findAll();
     }
 
     @Override
     public Storage getStorageById(int id) {
-        Optional< Storage > optional = storageRepository.findById(id);
+        Optional<Storage> optional = storageRepository.findById(id);
         Storage storage;
         if (optional.isPresent()) {
             storage = optional.get();

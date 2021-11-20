@@ -5,7 +5,6 @@ import com.example.demo.repository.DocumentRepository;
 import com.example.demo.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.util.Optional;
 
 @Service
@@ -71,9 +70,7 @@ public class ProductImpl implements ProductService {
                 System.out.println("статус не изменен");
             }
         }
-
         System.out.println("getOutProductById " + id + " res = " + res);
     }
-
 
 }

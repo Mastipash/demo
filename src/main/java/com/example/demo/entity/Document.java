@@ -6,7 +6,6 @@ import lombok.Setter;
 import lombok.ToString;
 import org.hibernate.Hibernate;
 import org.springframework.format.annotation.DateTimeFormat;
-
 import javax.persistence.*;
 import java.util.Date;
 import java.util.Objects;
@@ -30,26 +29,16 @@ public class Document {
     @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")
     private Date dtStart;
 
-  //  @Column(name = "nomenclature_id")
-  //  private Integer nomenclatureId;
-
     @ManyToOne
     @JoinColumn(name="nomenclature_id", nullable=false)
     private Nomenclature nomenclature;
 
-
     @Column
     private Integer cnt;
-
-  ////  @Column(name = "status_id")
-   ///  private Integer statusId;
 
     @ManyToOne
     @JoinColumn(name="status_id", nullable=false)
     private DocStatus docStatus;
-
- //@Column(name = "storage_id")
- //  private Integer storageId;
 
     @ManyToOne
     @JoinColumn(name="storage_id", nullable=false)

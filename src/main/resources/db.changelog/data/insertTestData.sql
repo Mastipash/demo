@@ -4,11 +4,11 @@ insert into nomenclature (code, description, price)
 values ('46025','Lego technic', 400.00);
 
 insert into storage (name, address, is_pvz)
-values ('Склад №1', 'Проспект Мира д.1', false);
+values ('Основной склад', 'Проспект Мира д.1', false);
 insert into storage (name, address, is_pvz)
-values ('РИО', 'Проспект Мира д.2', true);
+values ('ПВЗ №1', 'Проспект Мира д.2', true);
 insert into storage (name, address, is_pvz)
-values ('Город Хобби', 'Проспект Мира д.3', true);
+values ('ПВЗ №2', 'Проспект Мира д.3', true);
 
 insert into doc_status (id, name)
 values (1, 'Создан');

@@ -2,7 +2,6 @@ package com.example.demo.entity;
 
 import lombok.*;
 import org.hibernate.Hibernate;
-
 import javax.persistence.*;
 import java.util.Objects;
 import java.util.Set;

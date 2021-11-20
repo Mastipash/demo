@@ -16,6 +16,7 @@ import com.example.demo.entity.Nomenclature;
 import com.example.demo.service.NomenclatureService;
 
 import java.io.ByteArrayInputStream;
+
 import com.example.demo.topdf.PdfDocument;
 
 @Controller
@@ -25,16 +26,14 @@ public class MainController {
     @Autowired
     private NomenclatureService nomenclatureService;
 
-    @GetMapping(value = { "/", "/index" })
+    @GetMapping(value = {"/", "/index"})
     public String index(Model model) {
         return "index";
     }
 
     @GetMapping("/nomenclaturesList")
     public String nomenclatureList(Model model) {
-
         model.addAttribute("nomenclaturesList", nomenclatureService.getAllNomenclatures());
-
         return "nomenclaturesList";
     }
 
@@ -42,7 +41,6 @@ public class MainController {
     public String showAddNomenclaturePage(Model model) {
         Nomenclature nomenclature = new Nomenclature();
         model.addAttribute("nomenclature", nomenclature);
-
         return "addNomenclature";
     }
 
@@ -53,7 +51,7 @@ public class MainController {
     }
 
     @GetMapping("/updateNomenclature/{id}")
-    public String updateNomenclature(@PathVariable(value="id") int id, Model model) {
+    public String updateNomenclature(@PathVariable(value = "id") int id, Model model) {
         Nomenclature nomenclature = nomenclatureService.getNomenclatureById(id);
         model.addAttribute("nomenclature", nomenclature);
         return "updateNomenclature";
@@ -61,13 +59,11 @@ public class MainController {
 
     @PostMapping(value = "/exportPdf")
     public ResponseEntity<InputStreamResource> employeeReport() {
-
         ByteArrayInputStream bis = PdfDocument.nomenclaturePDFReport(nomenclature);
         HttpHeaders headers = new HttpHeaders();
         headers.add("Content-Disposition", "inline; filename=employees.pdf");
-
         return ResponseEntity.ok().headers(headers).contentType
-                        (MediaType.APPLICATION_PDF)
+                (MediaType.APPLICATION_PDF)
                 .body(new InputStreamResource(bis));
     }
 

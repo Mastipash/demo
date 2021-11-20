@@ -29,7 +29,7 @@
     Количество:
     <input type="text" th:field="*{cnt}"/>
     <br/><br/>
-     <div>
+    <div>
         <br/>
         Статус заказа:
         <select class="form-control" id="docStatus.id" name="docStatus.id">
@@ -39,18 +39,15 @@
         </select>
     </div>
 
-    <!--input type="text" th:field="*{storageId}"/-->
     <div>
         <br/>
         Склад:
         <select class="form-control" id="storage.id" name="storage.id">
-            <!--select class="form-control" id="storageId" name="storageId"-->
             <option th:each="storage : ${storageList}"
                     th:value="${storage.id}"
                     th:text="${storage.name}"></option>
         </select>
     </div>
-
 
     <br/>
     <button type="submit">Добавить заказ</button>
