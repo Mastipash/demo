@@ -1,17 +1,14 @@
 package com.example.demo.service;
 
 import java.util.Optional;
-
 import com.example.demo.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import com.example.demo.entity.Document;
 import com.example.demo.repository.DocumentRepository;
 
 @Service
 public class DocumentServiceImpl implements DocumentService {
-
 
     @Autowired
     private DocumentRepository documentRepository;
@@ -65,15 +62,12 @@ public class DocumentServiceImpl implements DocumentService {
             }
 
             if (res != 0) {
-
                 System.out.println("статус изменен, cnt =" + cntNeed + " cnt2= " + cntExist);
             } else {
                 System.out.println("статус не изменен");
             }
         }
-
         System.out.println("docMoove " + id + " res = " + res);
     }
-
 
 }

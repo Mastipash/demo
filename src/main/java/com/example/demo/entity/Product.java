@@ -1,19 +1,14 @@
 package com.example.demo.entity;
 
-
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 import org.hibernate.Hibernate;
 import org.springframework.format.annotation.DateTimeFormat;
-
 import javax.persistence.*;
-import java.io.Serializable;
 import java.util.Date;
-import java.util.List;
 import java.util.Objects;
-import java.util.Set;
 
 @Entity
 @Table(name = "product")
@@ -31,17 +26,11 @@ public class Product {
     @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")
     private Date dtStart;
 
-//   @Column(name = "nomenclature_id")
-//   private Integer nomenclatureId;
-
     @Column(columnDefinition = "integer default 0")
     private Integer cnt;
 
     @Column (columnDefinition = "integer default 0", name = "cnt_change")
     private Integer cntChange;
-
-  // @Column(name = "storage_id")
- //  private Integer storageId;
 
     @ManyToOne
     @JoinColumn(name="storage_id", nullable=false)

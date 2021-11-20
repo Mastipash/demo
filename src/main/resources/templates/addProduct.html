@@ -9,8 +9,7 @@
 <h1>Добавить товар на склад:</h1>
 <form action="#" th:action="@{/saveProducts}" th:object="${product}" method="post">
 
-    <!--input type="text" th:field="*{nomenclatureId}"/-->
-    <div>
+       <div>
         <br/>
         Наименование товара:
         <select class="form-control" id="nomenclature.id" name="nomenclature.id">
@@ -35,9 +34,7 @@
         </select>
     </div>
 
-    <br/>
-    <!--input type="text"  th:field="*{storage}"/-->
-    <br/>
+    <br/><br/>
     <button type="submit">Добавить товар</button>
     <br><br/>
     <a th:href="@{/productList}">Вернуться к списку товаров на складе</a>

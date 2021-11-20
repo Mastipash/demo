@@ -23,7 +23,6 @@ public class ProdController {
 
     @GetMapping("/productList")
     public String productList(Model model) {
-
         model.addAttribute("productList", productService.getAllProducts());
         System.out.println("!!! Contr productList ");
         return "productList";
@@ -56,7 +55,6 @@ public class ProdController {
     @GetMapping("/confirmProductById/{id}")
     public String confirmProductById(@PathVariable(value = "id") int id) {
         productService.confirmProductById(id);
-
         return "redirect:/docOutList";
     }
 

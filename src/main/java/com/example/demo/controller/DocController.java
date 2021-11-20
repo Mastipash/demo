@@ -1,7 +1,6 @@
 package com.example.demo.controller;
 
 import com.example.demo.entity.Document;
-import com.example.demo.entity.Product;
 import com.example.demo.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -28,7 +27,6 @@ public class DocController {
     public String docOutList(Model model) {
         model.addAttribute("productList", productService.getAllProducts());
         model.addAttribute("docOutList", documentService.getAllDocuments());
-        //  model.addAttribute("docOutList", documentRepository.findDocByStatusNative(1));
         return "docOutList";
     }
 
@@ -58,7 +56,6 @@ public class DocController {
     @GetMapping("/addDocOut")
     public String showAddDocOutPage(Model model) {
         Document document = new Document();
-        Product product = new Product();
         model.addAttribute("document", document);
         model.addAttribute("storageList", storageService.getAllStorages());
         model.addAttribute("nomenklList", nomenclatureService.getAllNomenclatures());
