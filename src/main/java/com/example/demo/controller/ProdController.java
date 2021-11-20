@@ -26,11 +26,11 @@ public class ProdController {
 
         model.addAttribute("productList", productService.getAllProducts());
         System.out.println("!!! Contr productList ");
-           return "productList";
+        return "productList";
     }
 
     @GetMapping("/updateProduct/{id}")
-    public String updateDocOut(@PathVariable(value = "id") int id, Model model) {
+    public String updateProduct(@PathVariable(value = "id") int id, Model model) {
         Product product = productService.getProductById(id);
         model.addAttribute("product", product);
         return "updateProduct";
@@ -52,4 +52,12 @@ public class ProdController {
         System.out.println("productList " + product);
         return "addProduct";
     }
+
+    @GetMapping("/confirmProductById/{id}")
+    public String confirmProductById(@PathVariable(value = "id") int id) {
+        productService.confirmProductById(id);
+
+        return "redirect:/docOutList";
+    }
+
 }

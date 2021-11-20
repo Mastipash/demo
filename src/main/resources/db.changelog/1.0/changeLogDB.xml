@@ -23,6 +23,7 @@
             <column defaultValueComputed="now()" name="dt_end" type="TIMESTAMP WITHOUT TIME ZONE"/>
             <column name="nomenclature_id" type="INTEGER"/>
             <column name="cnt" type="INTEGER"/>
+            <column name="cnt_change" type="INTEGER" defaultValueNumeric="0"/>
             <column name="storage_id" type="INTEGER"/>
         </createTable>
     </changeSet>

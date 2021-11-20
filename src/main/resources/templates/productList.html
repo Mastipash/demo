@@ -14,17 +14,19 @@
         <thead>
         <tr>
             <th>Номенклатура</th>
-            <th>Кол-во</th>
+            <th>Кол-во на складе</th>
+            <th>Ожидает подтверждения сторудником склада</th>
             <th>Склад/ПВЗ</th>
-            <th>Склад/ПВЗ(name)</th>
+            <th>Действие</th>
          </tr>
         </thead>
         <tbody>
         <tr th:each="product : ${productList}">
             <td th:utext="${product.nomenclature.description}"></td>
             <td th:utext="${product.cnt}"></td>
-            <td th:utext="${product.storage.id}"></td>
+            <td th:utext="${product.cntChange}"></td>
             <td th:utext="${product.storage.name}"></td>
+            <td><a th:href="@{/updateProduct/{id}(id=${product.id})}">Добавить товар</a></td>
         </tr>
         </tbody>
     </table>

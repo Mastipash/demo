@@ -2,11 +2,11 @@
 <html lang="ru" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8"/>
-    <title>Основной склад</title>
+    <title>Пункт выдачи заказов</title>
     <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>
 </head>
 <body>
-<h1>Основной склад</h1>
+<h1>Пункт выдачи заказов</h1>
 <br/><br/>
 
 <div>
@@ -15,25 +15,19 @@
         <tr>
             <th>Номенклатура</th>
             <th>Кол-во на складе</th>
-            <th>Ожидает подтверждения сторудником склада</th>
-            <th>Склад/ПВЗ</th>
-            <th>Действие</th>
+            <th>Склад/ПВЗ(name)</th>
         </tr>
         </thead>
         <tbody>
         <tr th:each="product : ${productList}">
             <td th:utext="${product.nomenclature.description}"></td>
             <td th:utext="${product.cnt}"></td>
-            <td th:utext="${product.cntChange}"></td>
             <td th:utext="${product.storage.name}"></td>
-            <td><a th:href="@{/confirmProductById/{id}(id=${product.id})}">Подтвердить добавление товара</a></td>
         </tr>
         </tbody>
     </table>
 </div>
-
 <br/><br/>
-
 <div>
     <table border="1">
         <thead>
@@ -45,7 +39,6 @@
             <th>Статус заказа</th>
             <th>Склад</th>
             <th>Действия</th>
-
         </tr>
         </thead>
         <tbody>
@@ -56,16 +49,13 @@
             <td th:utext="${document.cnt}"></td>
             <td th:utext="${document.docStatus.name}"></td>
             <td th:utext="${document.storage.name}"></td>
-            <td><a th:href="@{/updateDocOut/{id}(id=${document.id})}">Редактировать</a></td>
-            <td><a th:href="@{/docMooveById/{id}(id=${document.id})}">Переместить в ПВЗ</a></td>
-
+            <td><a th:href="@{/getOutProductById/{id}(id=${document.id})}">Выдать заказ</a></td>
         </tr>
         </tbody>
     </table>
 </div>
 <br/><br/>
-<a th:href="@{/addDocOut}">Добавить заказ</a>
-<br/><br/>
 <a th:href="@{/index}">Главная страница</a>
+
 </body>
 </html>

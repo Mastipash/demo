@@ -1,15 +1,41 @@
 package com.example.demo.repository;
 
 import com.example.demo.entity.Document;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.PagingAndSortingRepository;
+import org.springframework.transaction.annotation.Transactional;
 
 public interface DocumentRepository extends PagingAndSortingRepository<Document, Integer> {
     //   Document findById(String id);
 
+
+    @Modifying
+    @Transactional
     @Query(
-            value = "SELECT d.*,n.* as DSC FROM document d left join nomenclature n on d.nomenclature_id = n.id WHERE d.status_id = ?1",
+            value = "update document set status_id = ?3 where id = ?1 and status_id = ?2",
             nativeQuery = true)
-    Document findDocByStatusNative(Integer statusId);
+    Integer updateStatusByIdNative(Integer Id, Integer stausFrom, Integer statusTo);
+
+
+    @Query(
+            value = "select cnt from  document where id = ?1",
+            nativeQuery = true)
+    Integer selectCntByIdNative(Integer Id);
+
+    @Query(
+            value = "select nomenclature_id from  document where id = ?1",
+            nativeQuery = true)
+    Integer selectNomIdByIdNative(Integer Id);
+
+    @Query(
+            value = "select storage_id from  document where id = ?1",
+            nativeQuery = true)
+    Integer selectStorageIdByIdNative(Integer Id);
+
+    @Query(
+            value = "select status_id from  document where id = ?1",
+            nativeQuery = true)
+    Integer selectStatusIdByIdNative(Integer Id);
 
 }

@@ -34,8 +34,11 @@ public class Product {
 //   @Column(name = "nomenclature_id")
 //   private Integer nomenclatureId;
 
-    @Column
+    @Column(columnDefinition = "integer default 0")
     private Integer cnt;
+
+    @Column (columnDefinition = "integer default 0", name = "cnt_change")
+    private Integer cntChange;
 
   // @Column(name = "storage_id")
  //  private Integer storageId;
