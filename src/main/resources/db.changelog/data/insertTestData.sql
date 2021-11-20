@@ -26,7 +26,7 @@ insert into product (dt_start, dt_end, nomenclature_id, cnt, storage_id)
 values (current_timestamp, current_timestamp, 1, 5, 3);
 
 insert into document (doc_num, nomenclature_id, cnt, status_id, storage_id)
-values ('заказ №1', 1, 4, 1, 1);
+values ('заказ №1', 1, 4, 1, 2);
 
 insert into document (doc_num, nomenclature_id, cnt, status_id, storage_id)
 values ('заказ №2', 1, 20, 3, 3);

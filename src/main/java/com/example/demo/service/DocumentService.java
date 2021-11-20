@@ -6,5 +6,6 @@ public interface DocumentService {
     Iterable<Document> getAllDocuments();
     void saveDocuments(Document document);
     Document getDocumentById(int id);
+    void docMoove(int id);
 
 }

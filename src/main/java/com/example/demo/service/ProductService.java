@@ -7,4 +7,5 @@ public interface ProductService {
     Iterable<Product> getAllProducts();
     void saveProducts(Product product);
     Product getProductById(int id);
+    void confirmProductById(int id);
 }

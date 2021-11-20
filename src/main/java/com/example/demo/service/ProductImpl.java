@@ -38,4 +38,10 @@ public class ProductImpl implements ProductService {
         return product;
     }
 
+    @Override
+    public void confirmProductById(int id) {
+        productRepository.confirmProductById(id);
+        System.out.println("confirmProductById " + id );
+    }
+
 }

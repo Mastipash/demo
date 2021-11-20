@@ -8,8 +8,34 @@
 <body>
 <h1>Заказы</h1>
 <br/><br/>
+
 <div>
-    <table>
+    <table border="1">
+        <thead>
+        <tr>
+            <th>Номенклатура</th>
+            <th>Кол-во на складе</th>
+            <th>Ожидает подтверждения сторудником склада</th>
+            <th>Склад/ПВЗ(name)</th>
+            <th>Действие</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="product : ${productList}">
+            <td th:utext="${product.nomenclature.description}"></td>
+            <td th:utext="${product.cnt}"></td>
+            <td th:utext="${product.cntChange}"></td>
+            <td th:utext="${product.storage.name}"></td>
+            <td><a th:href="@{/confirmProductById/{id}(id=${product.id})}">Подтвердить добавление товара</a></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<br/><br/>
+
+<div>
+    <table border="1">
         <thead>
         <tr>
             <th>Номер заказа</th>
@@ -31,6 +57,7 @@
             <td th:utext="${document.docStatus.name}"></td>
             <td th:utext="${document.storage.name}"></td>
             <td><a th:href="@{/updateDocOut/{id}(id=${document.id})}">Редактировать</a></td>
+            <td><a th:href="@{/docMooveById/{id}(id=${document.id})}">Переместить в ПВЗ</a></td>
 
         </tr>
         </tbody>
@@ -40,5 +67,7 @@
 <a th:href="@{/addDocOut}">Добавить заказ</a>
 <br/><br/>
 <a th:href="@{/index}">Главная страница</a>
+<br/><br/>
+<a th:href="@{/docMoove}">Перемещение</a>
 </body>
 </html>

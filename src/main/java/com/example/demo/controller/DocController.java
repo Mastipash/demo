@@ -2,10 +2,7 @@ package com.example.demo.controller;
 
 import com.example.demo.entity.Document;
 import com.example.demo.entity.Product;
-import com.example.demo.service.DocStatusService;
-import com.example.demo.service.DocumentService;
-import com.example.demo.service.NomenclatureService;
-import com.example.demo.service.StorageService;
+import com.example.demo.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -24,10 +21,12 @@ public class DocController {
     private StorageService storageService;
     @Autowired
     private DocStatusService docStatusService;
+    @Autowired
+    private ProductService productService;
 
     @GetMapping("/docOutList")
     public String docOutList(Model model) {
-
+        model.addAttribute("productList", productService.getAllProducts());
         model.addAttribute("docOutList", documentService.getAllDocuments());
         //  model.addAttribute("docOutList", documentRepository.findDocByStatusNative(1));
         return "docOutList";
@@ -47,6 +46,12 @@ public class DocController {
     public String saveDocuments(@ModelAttribute("document") Document document) {
         documentService.saveDocuments(document);
         System.out.println("saveDocuments " + document);
+        return "redirect:/docOutList";
+    }
+
+    @GetMapping("/docMooveById/{id}")
+    public String docMooveById(@PathVariable(value = "id") int id) {
+        documentService.docMoove(id);
         return "redirect:/docOutList";
     }
 
