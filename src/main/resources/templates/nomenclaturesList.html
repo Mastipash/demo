@@ -40,5 +40,9 @@
 <form method="POST" action="#" th:action="@{/exportPdf}" th:object="${nomenclaturesList}">
     <button type="submit" class="btn btn-primary">Export to Pdf</button>
 </form>
+<br/>
+<a th:href="@{/productList}">Наличие товаров</a>
+<br/><br/>
+<a th:href="@{/index}">Главная страница</a>
 </body>
 </html>

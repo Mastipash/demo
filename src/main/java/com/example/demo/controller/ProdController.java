@@ -35,6 +35,13 @@ public class ProdController {
         return "updateProduct";
     }
 
+    @PostMapping("/updProducts")
+    public String updProducts(@ModelAttribute("product") Product product)  {
+        System.out.println("updProducts " + product);
+        productService.updProducts(product);
+        return "redirect:/productList";
+    }
+
     @PostMapping("/saveProducts")
     public String saveProducts(@ModelAttribute("product") Product product) {
         System.out.println("!!! Contr saveProducts " + product);

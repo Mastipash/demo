@@ -16,9 +16,9 @@ public interface ProductRepository extends PagingAndSortingRepository<Product, I
     void confirmProductById(Integer id);
 
     @Query(
-            value = "SELECT count(1) from  product where nomenclature_id = ?1 and storage_id = 1 and cnt >= ?2",
+            value = "SELECT count(1) from  product where nomenclature_id = ?1 and storage_id = 1 and cnt >= ?2 and cnt_change >= ?3",
             nativeQuery = true)
-    Integer selectCntProdByNomId(Integer nomId, Integer cnt);
+    Integer selectCntProdByNomId(Integer nomId, Integer cnt, Integer cntChange);
 
 
     @Modifying
@@ -42,5 +42,15 @@ public interface ProductRepository extends PagingAndSortingRepository<Product, I
             value = "delete from product where id = ?1",
             nativeQuery = true)
     void getOutProductById(Integer id);
+
+    @Query(
+            value = "SELECT id from product where nomenclature_id = ?1 and storage_id = 1",
+            nativeQuery = true)
+    Integer selectIdProdByNomId(Integer nomId);
+
+    @Query(
+            value = "select cnt from  product where id = ?1 and storage_id = 1 ",
+            nativeQuery = true)
+    Integer selectCntProductByIdNative(Integer Id);
 
 }
