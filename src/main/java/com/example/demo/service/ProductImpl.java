@@ -85,7 +85,8 @@ public class ProductImpl implements ProductService {
             cntNeed = documentRepository.selectCntByIdNative(id);  // сколько нужно в заказ
             nomId = documentRepository.selectNomIdByIdNative(id);  // что нужно в заказ
             storId = documentRepository.selectStorageIdByIdNative(id); // склад
-            productRepository.reduceProductByNomId(nomId, cntNeed, storId); // списать со склада
+       //   productRepository.reduceProductByNomId(nomId, cntNeed, storId); // списать со склада
+            productRepository.getOutProductById(nomId, cntNeed, storId); // удалить выданную строку
             res = documentRepository.updateStatusByIdNative(id, 2, 3); // обновить статус заказа
 
             if (res != 0) {
