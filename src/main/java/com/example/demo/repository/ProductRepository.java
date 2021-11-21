@@ -39,9 +39,9 @@ public interface ProductRepository extends PagingAndSortingRepository<Product, I
     @Modifying
     @Transactional
     @Query(
-            value = "delete from product where id = ?1",
+            value = "delete from product where nomenclature_id = ?1 and storage_id = ?3 and cnt = ?2",
             nativeQuery = true)
-    void getOutProductById(Integer id);
+    void getOutProductById(Integer nomId, Integer cnt, Integer storId);
 
     @Query(
             value = "SELECT id from product where nomenclature_id = ?1 and storage_id = 1",
