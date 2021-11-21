@@ -2,6 +2,7 @@ package com.example.demo.entity;
 
 import lombok.*;
 import org.hibernate.Hibernate;
+
 import javax.persistence.*;
 import java.util.Objects;
 import java.util.Set;
@@ -28,10 +29,10 @@ public class Nomenclature {
     @Column(nullable = false)
     private int price;
 
-    @OneToMany(mappedBy="storage")
+    @OneToMany(mappedBy = "storage")
     private Set<Document> document;
 
-    @OneToMany(mappedBy="storage")
+    @OneToMany(mappedBy = "storage")
     private Set<Product> product;
 
     @Override
@@ -45,5 +46,9 @@ public class Nomenclature {
     @Override
     public int hashCode() {
         return getClass().hashCode();
+    }
+
+    public Integer getId() {
+        return id;
     }
 }

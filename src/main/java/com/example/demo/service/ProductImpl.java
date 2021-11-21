@@ -1,10 +1,12 @@
 package com.example.demo.service;
 
+import com.example.demo.entity.Nomenclature;
 import com.example.demo.entity.Product;
 import com.example.demo.repository.DocumentRepository;
 import com.example.demo.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import java.util.Optional;
 
 @Service
@@ -21,11 +23,33 @@ public class ProductImpl implements ProductService {
     }
 
     @Override
-    public void saveProducts(Product document) {
+    public void saveProducts(Product product) {
 
-        System.out.println("saveProducts " + document);
+        System.out.println("saveProducts " + product);
 
-        this.productRepository.save(document);
+        this.productRepository.save(product);
+    }
+
+    @Override
+    public void updProducts(Product product) {
+        int nomExist = 0;
+        int prodId = 0;
+        int cntProd = 0;
+        Nomenclature nomenclature = product.getNomId();
+
+        nomExist = productRepository.selectCntProdByNomId(nomenclature.getId(), 0, 0); // проверяем есть ли такая номенклатура на основном складе
+        System.out.println("IMPL.  updProduct " + product + " product.getId() = " + product.getNomId() + " nomExist = " + nomExist);
+        if (nomExist == 1) {
+            System.out.println("есть на складе. Update cnt. prodId = " + prodId);
+            prodId = productRepository.selectIdProdByNomId(nomenclature.getId());// ишем id строки на складе
+            cntProd = productRepository.selectCntProductByIdNative(prodId); // запоминаем кол-во
+            product.setId(prodId);
+            product.setCnt(cntProd);
+        } else {
+            System.out.println("нет на складе. Insert");
+        }
+        System.out.println("IMPL.  updProduct " + product);
+        this.productRepository.save(product);
     }
 
     @Override

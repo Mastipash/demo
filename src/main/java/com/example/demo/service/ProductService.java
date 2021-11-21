@@ -9,4 +9,5 @@ public interface ProductService {
     Product getProductById(int id);
     void confirmProductById(int id);
     void getOutProductById(int id);
+    void updProducts(Product product);
 }

@@ -51,7 +51,7 @@ public class DocumentServiceImpl implements DocumentService {
             cntNeed = documentRepository.selectCntByIdNative(id);  // сколько нужно в заказ
             nomId = documentRepository.selectNomIdByIdNative(id);  // что нужно в заказ
             storId = documentRepository.selectStorageIdByIdNative(id); // куда перемещать
-            cntExist = productRepository.selectCntProdByNomId(nomId, cntNeed); // есть ли нужное кол-во товара на складе (1 - есть, 0 - нет)
+            cntExist = productRepository.selectCntProdByNomId(nomId, cntNeed, 0); // есть ли нужное кол-во товара на складе (1 - есть, 0 - нет)
             System.out.println("nomId= " + nomId + " нужно  = " + cntNeed + " достаточно ли на сладе? - " + cntExist);
 
             if (cntExist != 0) {

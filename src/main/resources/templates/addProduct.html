@@ -7,8 +7,7 @@
 </head>
 <body>
 <h1>Добавить товар на склад:</h1>
-<form action="#" th:action="@{/saveProducts}" th:object="${product}" method="post">
-
+<form action="#" th:action="@{/updProducts}" th:object="${product}" method="post">
        <div>
         <br/>
         Наименование товара:
@@ -16,14 +15,12 @@
             <option th:each="nomenklature : ${nomenklList}"
                     th:value="${nomenklature.id}"
                     th:text="${nomenklature.description}"></option>
-
         </select>
     </div>
     <br/>
     <input type="hidden" id = "cnt" name = "cnt" value ="0"/>
     Количество:
     <input type="text" th:field="*{cntChange}"/>
-
     <div>
         <br/>
         Склад:
