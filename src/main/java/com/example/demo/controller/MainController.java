@@ -26,10 +26,10 @@ public class MainController {
     @Autowired
     private NomenclatureService nomenclatureService;
 
-    @GetMapping(value = {"/", "/index"})
-    public String index(Model model) {
-        return "index";
-    }
+//    @GetMapping(value = {"/", "/index"})
+//    public String index(Model model) {
+//        return "index";
+//    }
 
     @GetMapping("/nomenclaturesList")
     public String nomenclatureList(Model model) {
