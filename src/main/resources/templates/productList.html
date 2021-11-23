@@ -2,40 +2,50 @@
 <html lang="ru" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Наличие товаров</title>
-    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"/>
 </head>
 <body>
+<nav class="navbar navbar-expand-md navbar-light bg-light">
+    <div class="navbar-nav">
+        <a class="navbar-brand" th:href="@{/index}">
+            <img th:src="@{images/logo1.png}" width="30" height="30" alt="">
+        </a>
+        <a th:href="@{/nomenclaturesList}" class="nav-item nav-link">Товары</a>
+        <a th:href="@{/docOutList}" class="nav-item nav-link">Основной склад</a>
+        <a th:href="@{/productList}" class="nav-item nav-link active">Наличие товаров</a>
+        <a th:href="@{/pvzList}" class="nav-item nav-link">ПВЗ</a>
+    </div>
+</nav>
 <h1>Наличие товаров</h1>
 
 <br/><br/>
 <div>
-    <table border="1">
+    <table  class="table table-striped table-responsive-md">
         <thead>
         <tr>
-            <th>Номенклатура</th>
+            <th>Товар</th>
             <th>Кол-во на складе</th>
-            <th>Ожидает подтверждения сторудником склада</th>
+            <th>Ожидает подтверждения сотрудником склада</th>
             <th>Склад/ПВЗ</th>
             <th>Действие</th>
          </tr>
         </thead>
         <tbody>
         <tr th:each="product : ${productList}">
-            <td th:utext="${product.nomenclature.description}"></td>
+            <td th:utext="${product.nomenclature.code} + ' ' + ${product.nomenclature.description}"></td>
             <td th:utext="${product.cnt}"></td>
             <td th:utext="${product.cntChange}"></td>
             <td th:utext="${product.storage.name}"></td>
-            <td><a th:href="@{/updateProduct/{id}(id=${product.id})}">Добавить товар</a></td>
+            <td><a th:href="@{/updateProduct/{id}(id=${product.id})}" class="btn btn-primary">Добавить товар</a></td>
         </tr>
         </tbody>
     </table>
 </div>
-<br/><br/>
-<a th:href="@{/addProduct}">Добавить товар на склад</a>
-<br/><br/>
-<a th:href="@{/nomenclaturesList}">Справичник товаров</a>
-<br/><br/>
-<a th:href="@{/index}">Главная страница</a>
+<br/>
+<a th:href="@{/addProduct}" class="btn btn-link">Добавить товар на склад</a>
+<br/>
+<a th:href="@{/nomenclaturesList}" class="btn btn-link">Справочник товаров</a>
 </body>
 </html>

@@ -1,68 +1,75 @@
 <!DOCTYPE HTML>
 <html lang="ru" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8"/>
-    <title>Основной склад</title>
-    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>
-</head>
-<body>
-<h1>Основной склад</h1>
-<br/><br/>
+    <head>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title>Основной склад</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"/>
+    </head>
+    <body>
+        <nav class="navbar navbar-expand-md navbar-light bg-light">
+            <div class="navbar-nav">
+                <a class="navbar-brand" th:href="@{/index}">
+                    <img th:src="@{images/logo1.png}" width="30" height="30" alt="">
+                </a>
+                <a th:href="@{/nomenclaturesList}" class="nav-item nav-link">Товары</a>
+                <a th:href="@{/docOutList}" class="nav-item nav-link active">Основной склад</a>
+                <a th:href="@{/productList}" class="nav-item nav-link">Наличие товаров</a>
+                <a th:href="@{/pvzList}" class="nav-item nav-link">ПВЗ</a>
+            </div>
+        </nav>
+        <h1>Основной склад</h1>
+        <div>
+            <table  class="table table-striped table-responsive-md">
+                <thead>
+                    <tr>
+                        <th>Номенклатура</th>
+                        <th>Кол-во на складе</th>
+                        <th>Ожидает подтверждения сотрудником склада</th>
+                        <th>Склад/ПВЗ</th>
+                        <th>Действие</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="product : ${productList}">
+                        <td th:utext="${product.nomenclature.description}"></td>
+                        <td th:utext="${product.cnt}"></td>
+                        <td th:utext="${product.cntChange}"></td>
+                        <td th:utext="${product.storage.name}"></td>
+                        <td><a th:href="@{/confirmProductById/{id}(id=${product.id})}" class="btn btn-primary">Подтвердить добавление товара</a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <br><br>
+        <div>
+            <table  class="table table-striped table-responsive-md">
+                <thead>
+                <tr>
+                    <th>Номер заказа</th>
+                    <th>Дата заказа</th>
+                    <th>Товар</th>
+                    <th>Кол-во</th>
+                    <th>Статус заказа</th>
+                    <th>Склад</th>
+                    <th>Действие</th>
 
-<div>
-    <table border="1">
-        <thead>
-        <tr>
-            <th>Номенклатура</th>
-            <th>Кол-во на складе</th>
-            <th>Ожидает подтверждения сторудником склада</th>
-            <th>Склад/ПВЗ</th>
-            <th>Действие</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr th:each="product : ${productList}">
-            <td th:utext="${product.nomenclature.description}"></td>
-            <td th:utext="${product.cnt}"></td>
-            <td th:utext="${product.cntChange}"></td>
-            <td th:utext="${product.storage.name}"></td>
-            <td><a th:href="@{/confirmProductById/{id}(id=${product.id})}">Подтвердить добавление товара</a></td>
-        </tr>
-        </tbody>
-    </table>
-</div>
-<br/><br/>
-<div>
-    <table border="1">
-        <thead>
-        <tr>
-            <th>Номер заказа</th>
-            <th>Дата заказа</th>
-            <th>Номенклатура</th>
-            <th>Кол-во</th>
-            <th>Статус заказа</th>
-            <th>Склад</th>
-            <th>Действия</th>
-
-        </tr>
-        </thead>
-        <tbody>
-        <tr th:each="document : ${docOutList}">
-            <td th:utext="${document.docNum}"></td>
-            <td th:utext="${document.dtStart}"></td>
-            <td th:utext="${document.nomenclature.description}"></td>
-            <td th:utext="${document.cnt}"></td>
-            <td th:utext="${document.docStatus.name}"></td>
-            <td th:utext="${document.storage.name}"></td>
-            <td><a th:href="@{/updateDocOut/{id}(id=${document.id})}">Редактировать</a></td>
-            <td><a th:href="@{/docMooveById/{id}(id=${document.id})}">Переместить в ПВЗ</a></td>
-        </tr>
-        </tbody>
-    </table>
-</div>
-<br/><br/>
-<a th:href="@{/addDocOut}">Добавить заказ</a>
-<br/><br/>
-<a th:href="@{/index}">Главная страница</a>
-</body>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="document : ${docOutList}">
+                    <td th:utext="${document.docNum}"></td>
+                    <td th:utext="${document.dtStart}"></td>
+                    <td th:utext="${document.nomenclature.description}"></td>
+                    <td th:utext="${document.cnt}"></td>
+                    <td th:utext="${document.docStatus.name}"></td>
+                    <td th:utext="${document.storage.name}"></td>
+                    <!--<td><a th:href="@{/updateDocOut/{id}(id=${document.id})}" class="btn btn-primary">Редактировать</a></td>-->
+                    <td><a th:href="@{/docMooveById/{id}(id=${document.id})}" class="btn btn-secondary">Отправить в ПВЗ</a></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <!--<a th:href="@{/addDocOut}">Добавить заказ</a>-->
+    </body>
 </html>

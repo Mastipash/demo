@@ -1,37 +1,47 @@
 <!DOCTYPE html>
 <html lang="ru" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <title>Редактировать товар</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-</head>
-<body>
-<nav class="navbar navbar-expand-md navbar-light bg-light">
-    <div class="navbar-nav">
-        <a th:href="@{/nomenclaturesList}" class="nav-item nav-link active">Товары</a>
-        <a class="nav-item nav-link">Заказы</a>
-        <a class="nav-item nav-link">Адреса</a>
-        <a class="nav-item nav-link">Документы</a>
-    </div>
-</nav>
-<h1>Добро пожаловать на склад</h1>
-<h2>Изменить товар:</h2>
-<div class="col-6">
-    <form action="#" th:action="@{/saveNomenclature}" th:object="${nomenclature}" method="POST">
-        <div class="form-group">
-            <label for="code">Код:</label>
-            <input type="text" class="form-control form-control-md" id="code" th:field="*{code}">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title>Редактировать товар</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    </head>
+    <body>
+        <nav class="navbar navbar-expand-md navbar-light bg-light">
+            <div class="navbar-nav">
+                <a class="navbar-brand" th:href="@{/index}">
+                    <img th:src="@{/images/logo1.png}" width="30" height="30" alt="">
+                </a>
+                <a th:href="@{/nomenclaturesList}" class="nav-item nav-link active">Товары</a>
+                <a th:href="@{/docOutList}" class="nav-item nav-link">основной склад</a>
+                <a th:href="@{/productList}" class="nav-item nav-link">Наличие товаров</a>
+                <a th:href="@{/pvzList}" class="nav-item nav-link">ПВЗ</a>
+            </div>
+        </nav>
+        <h1>Добро пожаловать на склад</h1>
+        <h2>Изменить товар:</h2>
+        <div class="col-6">
+            <form action="#" th:action="@{/saveNomenclature}" th:object="${nomenclature}" method="POST">
+                <div  class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="code">Код:</span>
+                    </div>
+                    <input type="text" class="form-control form-control-md" aria-describedby="code" th:field="*{code}">
+                </div>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="desc">Описание:</span>
+                    </div>
+                    <input type="text"  class="form-control form-control-md" aria-describedby="desc" th:field="*{description}">
+                </div>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="price">Цена:</span>
+                    </div>
+                    <input type="text"  class="form-control form-control-md" aria-describedby="price" th:field="*{price}">
+                </div>
+                <button type="submit" class="btn btn-primary">Сохранить товар</button>
+            </form>
         </div>
-        <div class="form-group">
-            <label for="desc">Описание:</label>
-            <input type="text"  class="form-control form-control-md" id="desc" th:field="*{description}">
-        </div>
-        <div class="form-group">
-            <label for="price">Цена:</label>
-            <input type="text"  class="form-control form-control-md" id="price" th:field="*{price}">
-        </div>
-        <button type="submit" class="btn btn-primary">Сохранить товар</button>
-    </form>
-</div>
-</body>
+    </body>
 </html>

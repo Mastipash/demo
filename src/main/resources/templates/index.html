@@ -8,12 +8,16 @@
   <body>
     <nav class="navbar navbar-expand-md navbar-light bg-light">
       <div class="navbar-nav">
+        <a class="navbar-brand" href="#">
+          <img th:src="@{images/logo1.png}" width="30" height="30" alt="">
+        </a>
         <a th:href="@{/nomenclaturesList}" class="nav-item nav-link">Товары</a>
         <a th:href="@{/docOutList}" class="nav-item nav-link">Основной склад</a>
         <a th:href="@{/productList}" class="nav-item nav-link">Наличие товаров</a>
         <a th:href="@{/pvzList}" class="nav-item nav-link">ПВЗ</a>
       </div>
     </nav>
-    <h1>Добро пожаловать на склад</h1>
+    <h1 align="center">Добро пожаловать на склад</h1>
+  <div align="center"><img  th:src="@{images/img.jpg}"></div>
   </body>
 </html>

@@ -2,57 +2,69 @@
 <html lang="ru" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Добавленние заказа</title>
-    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"/>
 </head>
 <body>
+<nav class="navbar navbar-expand-md navbar-light bg-light">
+    <div class="navbar-nav">
+        <a class="navbar-brand" th:href="@{/index}">
+            <img th:src="@{images/logo1.png}" width="30" height="30" alt="">
+        </a>
+        <a th:href="@{/nomenclaturesList}" class="nav-item nav-link">Товары</a>
+        <a th:href="@{/docOutList}" class="nav-item nav-link  active">Основной склад</a>
+        <a th:href="@{/productList}" class="nav-item nav-link">Наличие товаров</a>
+        <a th:href="@{/pvzList}" class="nav-item nav-link">ПВЗ</a>
+    </div>
+</nav>
 <h1>Добавить заказ:</h1>
-<form action="#" th:action="@{/saveDocuments}" th:object="${document}" method="post">
-    <input type="hidden" th:field="*{id}">
-    <br>
-    Номер заказа:
-    <input type="text" th:field="*{docNum}"/>
-    <br/><br/>
-    Дата
-    <input type="datetime-local" th:name="dtStart" th:id="*{dtStart}"/>
-    <br/>
-    <div>
+<div class="col-6">
+    <form action="#" th:action="@{/saveDocuments}" th:object="${document}" method="post">
+        <input type="hidden" th:field="*{id}">
+        <br>
+        Номер заказа:
+        <input type="text" th:field="*{docNum}"/>
+        <br/><br/>
+        Дата:
+        <input type="datetime-local" th:name="dtStart" th:id="*{dtStart}"/>
         <br/>
-        Наименование товара:
-        <select class="form-control" id="nomenclature.id" name="nomenclature.id">
-            <option th:each="nomenklature : ${nomenklList}"
-                    th:value="${nomenklature.id}"
-                    th:text="${nomenklature.description}"></option>
-        </select>
-    </div>
-    <br/>
-    Количество:
-    <input type="text" th:field="*{cnt}"/>
-    <br/><br/>
-    <div>
+        <div>
+            <br/>
+            Наименование товара:
+            <select class="form-control" id="nomenclature.id" name="nomenclature.id">
+                <option th:each="nomenklature : ${nomenklList}"
+                        th:value="${nomenklature.id}"
+                        th:text="${nomenklature.description}"></option>
+            </select>
+        </div>
         <br/>
-        Статус заказа:
-        <select class="form-control" id="docStatus.id" name="docStatus.id">
-            <option th:each="docStatus : ${docStatusList}"
-                    th:value="${docStatus.id}"
-                    th:text="${docStatus.name}"></option>
-        </select>
-    </div>
+        Количество:
+        <input type="text" th:field="*{cnt}"/>
+        <br/><br/>
+        <div>
+            <br/>
+            Статус заказа:
+            <select class="form-control" id="docStatus.id" name="docStatus.id">
+                <option th:each="docStatus : ${docStatusList}"
+                        th:value="${docStatus.id}"
+                        th:text="${docStatus.name}"></option>
+            </select>
+        </div>
 
-    <div>
-        <br/>
-        Склад:
-        <select class="form-control" id="storage.id" name="storage.id">
-            <option th:each="storage : ${storageList}"
-                    th:value="${storage.id}"
-                    th:text="${storage.name}"></option>
-        </select>
-    </div>
-
-    <br/>
-    <button type="submit">Добавить заказ</button>
-    <br>
-    <a th:href="@{/docOutList}">Вернуться к списку заказов</a>
-</form>
+        <div>
+            <br/>
+            Склад:
+            <select class="form-control" id="storage.id" name="storage.id">
+                <option th:each="storage : ${storageList}"
+                        th:value="${storage.id}"
+                        th:text="${storage.name}"></option>
+            </select>
+        </div>
+        <button type="submit">Добавить заказ</button>
+    </form>
+</div>
+<br>
+<a th:href="@{/docOutList}" class="btn btn-link">Вернуться к списку заказов</a>
 </body>
 </html>
