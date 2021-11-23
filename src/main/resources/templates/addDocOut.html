@@ -7,73 +7,90 @@
     <title>Добавленние заказа</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"/>
 </head>
-<body>
-<nav class="navbar navbar-expand-md navbar-light bg-light">
-    <div class="navbar-nav">
-        <a class="navbar-brand" th:href="@{/index}">
-            <img th:src="@{images/logo1.png}" width="30" height="30" alt="">
-        </a>
-        <div sec:authorize="hasRole('SELLER')">
-            <a th:href="@{/nomenclaturesList}" class="nav-item nav-link">Товары</a>
-        </div>
-        <div sec:authorize="hasRole('EMPL')">
-            <a th:href="@{/docOutList}" class="nav-item nav-link  active">Основной склад</a>
-        </div>
-        <div sec:authorize="hasRole('SELLER')">
-            <a th:href="@{/productList}" class="nav-item nav-link">Наличие товаров</a>
-        </div>
-        <div sec:authorize="hasRole('MANAGER')">
-            <a th:href="@{/pvzList}" class="nav-item nav-link">ПВЗ</a>
-        </div>
-    </div>
-</nav>
-<h1>Добавить заказ:</h1>
-<div class="col-6">
-    <form action="#" th:action="@{/saveDocuments}" th:object="${document}" method="post">
-        <input type="hidden" th:field="*{id}">
-        <br>
-        Номер заказа:
-        <input type="text" th:field="*{docNum}"/>
-        <br/><br/>
-        Дата:
-        <input type="datetime-local" th:name="dtStart" th:id="*{dtStart}"/>
-        <br/>
-        <div>
-            <br/>
-            Наименование товара:
-            <select class="form-control" id="nomenclature.id" name="nomenclature.id">
-                <option th:each="nomenklature : ${nomenklList}"
-                        th:value="${nomenklature.id}"
-                        th:text="${nomenklature.description}"></option>
-            </select>
-        </div>
-        <br/>
-        Количество:
-        <input type="text" th:field="*{cnt}"/>
-        <br/><br/>
-        <div>
-            <br/>
-            Статус заказа:
-            <select class="form-control" id="docStatus.id" name="docStatus.id">
-                <option th:each="docStatus : ${docStatusList}"
-                        th:value="${docStatus.id}"
-                        th:text="${docStatus.name}"></option>
-            </select>
-        </div>
+    <body>
+        <nav class="navbar navbar-expand-md navbar-light bg-light">
+            <div class="navbar-nav">
+                <a class="navbar-brand" th:href="@{/index}">
+                    <img th:src="@{images/logo1.png}" width="30" height="30" alt="">
+                </a>
+                <div sec:authorize="hasRole('SELLER')">
+                    <a th:href="@{/nomenclaturesList}" class="nav-item nav-link">Товары</a>
+                </div>
+                <div sec:authorize="hasRole('EMPL')">
+                    <a th:href="@{/docOutList}" class="nav-item nav-link  active">Основной склад</a>
+                </div>
+                <div sec:authorize="hasRole('SELLER')">
+                    <a th:href="@{/productList}" class="nav-item nav-link">Наличие товаров</a>
+                </div>
+                <div sec:authorize="hasRole('MANAGER')">
+                    <a th:href="@{/pvzList}" class="nav-item nav-link">ПВЗ</a>
+                </div>
+            </div>
+        </nav>
 
-        <div>
-            <br/>
-            Склад:
-            <select class="form-control" id="storage.id" name="storage.id">
-                <option th:each="storage : ${storageList}"
-                        th:value="${storage.id}"
-                        th:text="${storage.name}"></option>
-            </select>
+        <h1>Добавить заказ:</h1>
+
+        <div class="col-6">
+            <form action="#" th:action="@{/saveDocuments}" th:object="${document}" method="post">
+                <input type="hidden" th:field="*{id}">
+                <div  class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="docNum">Номер заказа:</span>
+                    </div>
+                    <input type="text" aria-describedby="docNum" th:field="*{docNum}"/>
+                </div>
+
+                <div  class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="dtStart">Дата заказа:</span>
+                    </div>
+                    <input type="datetime-local" aria-describedby="dtStart" th:name="dtStart" th:id="*{dtStart}"/>
+                </div>
+
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <label class="input-group-text" for="nomenclature.id">Наименование товара:</label>
+                    </div>
+                    <select class="custom-select" id="nomenclature.id" name="nomenclature.id">
+                        <option th:each="nomenklature : ${nomenklList}"
+                                th:value="${nomenklature.id}"
+                                th:text="${nomenklature.description}"></option>
+                    </select>
+                </div>
+
+                <div  class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="cnt">Количество:</span>
+                    </div>
+                    <input type="text" aria-describedby="cnt" th:field="*{cnt}"/>
+                </div>
+
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <label class="input-group-text" for="docStatus.id">Статус заказа:</label>
+                    </div>
+                    <select class="ustom-select" id="docStatus.id" name="docStatus.id">
+                        <option th:each="docStatus : ${docStatusList}"
+                                th:value="${docStatus.id}"
+                                th:text="${docStatus.name}"></option>
+                    </select>
+                </div>
+
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <label class="input-group-text" for="storage.id">Склад:</label>
+                    </div>
+                    <select class="form-control" id="storage.id" name="storage.id">
+                        <option th:each="storage : ${storageList}"
+                                th:value="${storage.id}"
+                                th:text="${storage.name}"></option>
+                    </select>
+                </div>
+
+                <button type="submit" class="btn btn-primary">Добавить заказ</button>
+            </form>
         </div>
-        <button type="submit">Добавить заказ</button>
-    </form>
-</div>
-<br>
-<a th:href="@{/docOutList}" class="btn btn-link">Вернуться к списку заказов</a>
-</body>
+        <br>
+        <a th:href="@{/docOutList}" class="btn btn-link">Вернуться к списку заказов</a>
+    </body>
 </html>

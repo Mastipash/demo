@@ -1,51 +1,58 @@
 <!DOCTYPE html>
 <html lang="ru" xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
-<head>
-    <meta charset="UTF-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Редактировать заказ</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"/>
-</head>
-<body>
-<nav class="navbar navbar-expand-md navbar-light bg-light">
-    <div class="navbar-nav">
-        <a class="navbar-brand" th:href="@{/index}">
-            <img th:src="@{/images/logo1.png}" width="30" height="30" alt="">
-        </a>
-        <div sec:authorize="hasRole('SELLER')">
-            <a th:href="@{/nomenclaturesList}" class="nav-item nav-link">Товары</a>
+    <head>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title>Редактировать заказ</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"/>
+    </head>
+    <body>
+        <nav class="navbar navbar-expand-md navbar-light bg-light">
+            <div class="navbar-nav">
+                <a class="navbar-brand" th:href="@{/index}">
+                    <img th:src="@{/images/logo1.png}" width="30" height="30" alt="">
+                </a>
+
+                <div sec:authorize="hasRole('SELLER')">
+                    <a th:href="@{/nomenclaturesList}" class="nav-item nav-link">Товары</a>
+                </div>
+
+                <div sec:authorize="hasRole('EMPL')">
+                    <a th:href="@{/docOutList}" class="nav-item nav-link  active">Основной склад</a>
+                </div>
+
+                <div sec:authorize="hasRole('SELLER')">
+                    <a th:href="@{/productList}" class="nav-item nav-link">Наличие товаров</a>
+                </div>
+
+                <div sec:authorize="hasRole('MANAGER')">
+                    <a th:href="@{/pvzList}" class="nav-item nav-link">ПВЗ</a>
+                </div>
+            </div>
+        </nav>
+
+        <h1>Добавить товар на склад:</h1>
+
+        <div class="col-6">
+            <form action="#" th:action="@{/saveProducts}" th:object="${product}" method="post">
+                <h2 th:utext="*{nomenclature.description}"></h2>
+                <input type="hidden" th:field="*{id}">
+                <input type="hidden" th:field="*{nomenclature.id}">
+                <input type="hidden" th:field="*{storage.id}">
+                <input type="hidden" th:field="*{cnt}">
+                <br>
+                <div  class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="cntChange">Добавить:</span>
+                    </div>
+                <input type="text" aria-describedby="cntChange" th:field="*{cntChange}"/>
+                </div>
+
+                <button type="submit" class="btn btn-primary">Сохранить</button>
+            </form>
         </div>
-        <div sec:authorize="hasRole('EMPL')">
-            <a th:href="@{/docOutList}" class="nav-item nav-link  active">Основной склад</a>
-        </div>
-        <div sec:authorize="hasRole('SELLER')">
-            <a th:href="@{/productList}" class="nav-item nav-link">Наличие товаров</a>
-        </div>
-        <div sec:authorize="hasRole('MANAGER')">
-            <a th:href="@{/pvzList}" class="nav-item nav-link">ПВЗ</a>
-        </div>
-    </div>
-</nav>
-<h1>Добавить товар на склад:</h1>
-<div class="col-6">
-<form action="#" th:action="@{/saveProducts}" th:object="${product}" method="post">
-    <h2 th:utext="*{nomenclature.description}"></h2>
-    <input type="hidden" th:field="*{id}">
-    <input type="hidden" th:field="*{nomenclature.id}">
-    <input type="hidden" th:field="*{storage.id}">
-    <input type="hidden" th:field="*{cnt}">
-    <br/>
-    <div  class="input-group mb-3">
-        <div class="input-group-prepend">
-            <span class="input-group-text" id="cntChange">Добавить:</span>
-        </div>
-    <input type="text" aria-describedby="cntChange" th:field="*{cntChange}"/>
-    </div>
-    <button type="submit" class="btn btn-primary">Сохранить</button>
-</form>
-</div>
-<br>
-    <a th:href="@{/productList}" class="btn btn-link">Вернуться к списку товаров на складе</a>
-</body>
+        <br>
+        <a th:href="@{/productList}" class="btn btn-link">Вернуться к списку товаров на складе</a>
+    </body>
 </html>

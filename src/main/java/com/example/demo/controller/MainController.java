@@ -67,4 +67,9 @@ public class MainController {
                 .body(new InputStreamResource(bis));
     }
 
+    @GetMapping("error")
+    public String errorPage() {
+        return "error";
+    }
+
 }
