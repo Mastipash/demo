@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+<html lang="ru" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -12,10 +13,18 @@
         <a class="navbar-brand" th:href="@{/index}">
             <img th:src="@{/images/logo1.png}" width="30" height="30" alt="">
         </a>
-        <a th:href="@{/nomenclaturesList}" class="nav-item nav-link">Товары</a>
-        <a th:href="@{/docOutList}" class="nav-item nav-link">Основной склад</a>
-        <a th:href="@{/productList}" class="nav-item nav-link active">Наличие товаров</a>
-        <a th:href="@{/pvzList}" class="nav-item nav-link">ПВЗ</a>
+        <div sec:authorize="hasRole('SELLER')">
+            <a th:href="@{/nomenclaturesList}" class="nav-item nav-link">Товары</a>
+        </div>
+        <div sec:authorize="hasRole('EMPL')">
+            <a th:href="@{/docOutList}" class="nav-item nav-link  active">Основной склад</a>
+        </div>
+        <div sec:authorize="hasRole('SELLER')">
+            <a th:href="@{/productList}" class="nav-item nav-link">Наличие товаров</a>
+        </div>
+        <div sec:authorize="hasRole('MANAGER')">
+            <a th:href="@{/pvzList}" class="nav-item nav-link">ПВЗ</a>
+        </div>
     </div>
 </nav>
 <h1>Добавить товар на склад:</h1>
