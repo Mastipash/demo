@@ -1,7 +1,7 @@
 insert into nomenclature (code, description, price)
-values ('46022','lego creator', 500.00);
+values ('46022','Бенгальские огни', 200.00);
 insert into nomenclature (code, description, price)
-values ('46025','Lego technic', 400.00);
+values ('46025','LED гирлянда 240 ламп', 400.00);
 
 insert into storage (name, address, is_pvz)
 values ('Основной склад', 'Проспект Мира д.1', false);
