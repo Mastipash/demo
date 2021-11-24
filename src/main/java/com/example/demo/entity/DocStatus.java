@@ -24,4 +24,9 @@ public class DocStatus {
      @OneToMany(mappedBy="docStatus")
     private Set<Document> document;
 
+     public DocStatus(Integer id, String name) {
+         this.id = id;
+         this.name = name;
+     }
+
 }

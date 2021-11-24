@@ -22,7 +22,7 @@ public class DocumentServiceImpl implements DocumentService {
 
     @Override
     public void saveDocuments(Document document) {
-        this.documentRepository.save(document);
+        documentRepository.save(document);
     }
 
     @Override
