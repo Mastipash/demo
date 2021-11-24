@@ -38,7 +38,7 @@
   <br/>
   <div sec:authorize="isAuthenticated()">
     <p class="button2">
-      <a href="@{logout}" class="btn btn-dark">Выйти</a>
+      <a th:href="@{logout}" class="btn btn-dark">Выйти</a>
     </p>
   </div>
 </html>
