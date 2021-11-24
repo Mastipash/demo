@@ -2,6 +2,12 @@ insert into nomenclature (code, description, price)
 values ('46022','lego creator', 500.00);
 insert into nomenclature (code, description, price)
 values ('46025','Lego technic', 400.00);
+insert into nomenclature (code, description, price)
+values ('46022','lego ninziago', 300.00);
+insert into nomenclature (code, description, price)
+values ('46025','Lego duplo', 150.00);
+insert into nomenclature (code, description, price)
+values ('46025','Lego technic', 190.00);
 
 insert into storage (name, address, is_pvz)
 values ('Основной склад', 'Проспект Мира д.1', false);

@@ -35,20 +35,14 @@ public class Nomenclature {
     @OneToMany(mappedBy = "storage")
     private Set<Product> product;
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
-        Nomenclature that = (Nomenclature) o;
-        return id != null && Objects.equals(id, that.id);
-    }
-
-    @Override
-    public int hashCode() {
-        return getClass().hashCode();
-    }
-
     public Integer getId() {
         return id;
+    }
+
+    public Nomenclature(Integer id, String code, String description, Integer price) {
+        this.id = id;
+        this.code = code;
+        this.description = description;
+        this.price = price;
     }
 }

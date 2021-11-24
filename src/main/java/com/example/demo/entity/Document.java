@@ -44,16 +44,12 @@ public class Document {
     @JoinColumn(name="storage_id", nullable=false)
     private Storage storage;
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
-        Document that = (Document) o;
-        return id != null && Objects.equals(id, that.id);
-    }
-
-    @Override
-    public int hashCode() {
-        return getClass().hashCode();
+    public Document(String docNum, Date dtStart, Nomenclature nomenclature, Integer cnt, DocStatus docStatus, Storage storage) {
+        this.docNum = docNum;
+        this.dtStart = dtStart;
+        this.nomenclature = nomenclature;
+        this.cnt = cnt;
+        this.docStatus = docStatus;
+        this.storage = storage;
     }
 }

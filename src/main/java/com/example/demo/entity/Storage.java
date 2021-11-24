@@ -33,4 +33,10 @@ public class Storage {
     @Column(name = "is_pvz")
     private Boolean isPvz;
 
+    public Storage(Integer id, String name, String address, Boolean isPvz){
+        this.id = id;
+        this.name = name;
+        this.address = address;
+        this.isPvz = isPvz;
+    }
 }

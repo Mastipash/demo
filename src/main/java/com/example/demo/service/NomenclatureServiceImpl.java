@@ -19,7 +19,7 @@ public class NomenclatureServiceImpl implements NomenclatureService{
 
     @Override
     public void saveNomenclature(Nomenclature nomenclature) {
-        this.nomenclatureRepository.save(nomenclature);
+        nomenclatureRepository.save(nomenclature);
     }
 
     @Override
