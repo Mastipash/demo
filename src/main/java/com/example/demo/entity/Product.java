@@ -41,19 +41,6 @@ public class Product {
     @JoinColumn(name = "nomenclature_id", nullable = false)
     private Nomenclature nomenclature;
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
-        Product that = (Product) o;
-        return id != null && Objects.equals(id, that.id);
-    }
-
-    @Override
-    public int hashCode() {
-        return getClass().hashCode();
-    }
-
     public Nomenclature getNomId() {
         return nomenclature;
     }
