@@ -1,7 +1,11 @@
 insert into nomenclature (code, description, price)
-values ('46022','lego creator', 500.00);
+values ('46022','Бенгальские огни', 200.00);
 insert into nomenclature (code, description, price)
-values ('46025','Lego technic', 400.00);
+values ('46025','LED гирлянда 240 ламп', 400.00);
+insert into nomenclature (code, description, price)
+values ('46025','Новогодняя шапка', 100.00);
+insert into nomenclature (code, description, price)
+values ('46025','Ёлочная игрушка шар', 150.00);
 
 insert into storage (name, address, is_pvz)
 values ('Основной склад', 'Проспект Мира д.1', false);
@@ -20,7 +24,13 @@ insert into doc_status (id, name)
 values (4, 'Отменен');
 
 insert into product (dt_start, dt_end, nomenclature_id, cnt, storage_id)
-values (current_timestamp, current_timestamp, 1, 10, 1);
+values (current_timestamp, current_timestamp, 1, 10000, 1);
+insert into product (dt_start, dt_end, nomenclature_id, cnt, storage_id)
+values (current_timestamp, current_timestamp, 2, 10000, 1);
+insert into product (dt_start, dt_end, nomenclature_id, cnt, storage_id)
+values (current_timestamp, current_timestamp, 3, 10000, 1);
+insert into product (dt_start, dt_end, nomenclature_id, cnt, storage_id)
+values (current_timestamp, current_timestamp, 4, 10000, 1);
 
 insert into product (dt_start, dt_end, nomenclature_id, cnt, storage_id)
 values (current_timestamp, current_timestamp, 1, 5, 3);
